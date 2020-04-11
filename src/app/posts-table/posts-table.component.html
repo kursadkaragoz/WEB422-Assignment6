@@ -1,0 +1,35 @@
+<br />
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <a routerLink="/admin/newPost" class="btn btn-success btn-sm pull-right"
+        >+&nbsp;&nbsp;New Post</a
+      ><br /><br />
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Post Date</th>
+            <th>Category</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <ul>
+            <li *ngFor="let blogposts of blogPosts">
+              <tr (click)="rowClicked($event, blogposts._id)">
+                <td>{{ blogposts.title }}</td>
+                &nbsp;
+                <td>{{ blogposts.postDate | date: "mediumDate" }}</td>
+                <td>{{ blogposts.category }}</td>
+              </tr>
+            </li>
+          </ul>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<br />

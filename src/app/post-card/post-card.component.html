@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <div app-post-card class="post col-xl-7">
+      <ul class="list-inline" id="posts" style="list-style: none;">
+        <li class="list-inline-item" *ngFor="let post of blogPosts">
+          <div class="post-thumbnail">
+            <a [routerLink]="['/post', post._id]"
+              ><img src="{{ post.featuredImage }}" alt="..." class="img-fluid"
+            /></a>
+          </div>
+          <div class="post-details">
+            <div class="post-meta d-flex justify-content-between">
+              <div class="date meta-last">
+                {{ post.postDate | date: "mediumDate" }}
+              </div>
+              <div class="category">
+                <a href="#">{{ post.category }} </a>
+              </div>
+            </div>
+            <a [routerLink]="['/post', post._id]">
+              <h3 class="h4">{{ post.title }}</h3>
+            </a>
+            <div class="text-muted" [innerHTML]="post.post"></div>
+            <footer class="post-footer d-flex align-items-center">
+              <a href="#" class="author d-flex align-items-center flex-wrap">
+                <div class="avatar">
+                  <img
+                    src="/assets/img/user.svg"
+                    alt="..."
+                    class="img-fluid"
+                  />>
+                </div>
+                <div class="title">
+                  <span> {{ post.postedBy }}</span>
+                </div></a
+              >
+              <div class="date">{{ post.postDate | date: "mediumDate" }}</div>
+              <div class="meta-last">
+                <i class="icon-comment"></i> {{ post.comments.length }}
+              </div>
+            </footer>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
